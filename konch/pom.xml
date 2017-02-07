@@ -92,5 +92,6 @@
     <module>konch-ejb</module>
     <module>konch-web</module>
     <module>konch-ear</module>
+    <module>konch-client</module>
   </modules>
 </project>

@@ -1,0 +1,29 @@
+package services;
+
+import java.util.List;
+
+import javax.ejb.Remote;
+
+import entities.Project;
+import entities.Task;
+
+@Remote
+public interface ProjectManagementRemote {
+	void addProject(Project project);
+
+	void assignProjectToTask(Task task, Integer idProject);
+
+	List<Project> findAllProjects();
+
+	Project findProjectById(int idProject);
+
+	void assingTutorToProject(Integer idProject, Integer idTutor);
+
+	void assignTasksToProject(List<Task> tasks, Integer idProject);
+
+	void assignTaskToStudent(Task task, Integer i);
+
+	List<Task> findAllTasksByProjectId(Integer idProject);
+
+	List<Task> findAllTasksByProjectIdRequest(Integer idProject);
+}

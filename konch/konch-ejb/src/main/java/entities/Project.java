@@ -3,7 +3,11 @@ package entities;
 import java.io.Serializable;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
@@ -17,6 +21,7 @@ import javax.persistence.OneToMany;
 public class Project implements Serializable {
 
 	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
 	private String name;
 	private static final long serialVersionUID = 1L;
@@ -24,11 +29,16 @@ public class Project implements Serializable {
 	@ManyToOne
 	private User supervisor;
 
-	@OneToMany(mappedBy = "project")
+	@OneToMany(mappedBy = "project", cascade = CascadeType.MERGE)
 	private List<Task> tasks;
 
 	public Project() {
 		super();
+	}
+
+	public Project(String name) {
+		super();
+		this.name = name;
 	}
 
 	public Integer getId() {
@@ -63,4 +73,10 @@ public class Project implements Serializable {
 		this.tasks = tasks;
 	}
 
+	public void linkTasksToThisProject(List<Task> tasks) {
+		this.tasks = tasks;
+		for (Task t : tasks) {
+			t.setProject(this);
+		}
+	}
 }

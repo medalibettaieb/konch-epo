@@ -36,6 +36,8 @@ public interface ProjectManagementRemote {
 	List<Task> findAllTasksByStatusAndProject(Integer idProject, TaskStatus taskStatus);
 
 	List<Task> findAllTasksByStatusAndStudent(Integer idStudent, TaskStatus taskStatus);
-	
-	Date projectDeadline(Integer idProject);
+
+	Integer projectDuration(Integer idProject);
+
+	Date deadlineProject(Integer idProject, Date date);
 }

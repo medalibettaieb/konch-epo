@@ -1,6 +1,7 @@
 package entities;
 
 import java.io.Serializable;
+import java.util.Date;
 import java.util.List;
 
 import javax.persistence.CascadeType;
@@ -23,6 +24,7 @@ public class Project implements Serializable {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
 	private String name;
+	private Date startingDate;
 	private static final long serialVersionUID = 1L;
 
 	@ManyToOne
@@ -78,5 +80,13 @@ public class Project implements Serializable {
 			t.setProject(this);
 			t.setTaskStatus(TaskStatus.INPROGRESS);
 		}
+	}
+
+	public Date getStartingDate() {
+		return startingDate;
+	}
+
+	public void setStartingDate(Date startingDate) {
+		this.startingDate = startingDate;
 	}
 }

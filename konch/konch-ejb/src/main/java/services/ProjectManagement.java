@@ -1,5 +1,6 @@
 package services;
 
+import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
@@ -135,9 +136,25 @@ public class ProjectManagement implements ProjectManagementRemote, ProjectManage
 	}
 
 	@Override
-	public Date projectDeadline(Integer idProject) {
-		// TODO Auto-generated method stub
-		return null;
+	public Integer projectDuration(Integer idProject) {
+		List<Task> tasks = findAllTasksByProjectId(idProject);
+
+		Integer totalEstimation = 0;
+		for (Task task : tasks) {
+			totalEstimation += task.getEstimation();
+		}
+		return totalEstimation;
+
 	}
 
+	@Override
+	public Date deadlineProject(Integer idProject, Date date) {
+		Integer projectDuration = projectDuration(idProject);
+
+		Calendar calendar = Calendar.getInstance();
+		calendar.setTime(date);
+		calendar.add(Calendar.DATE, projectDuration);
+		return calendar.getTime();
+
+	}
 }

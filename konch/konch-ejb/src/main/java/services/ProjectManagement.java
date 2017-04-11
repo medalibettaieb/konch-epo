@@ -9,6 +9,7 @@ import javax.persistence.PersistenceContext;
 
 import entities.Project;
 import entities.Task;
+import entities.TaskStatus;
 import entities.User;
 
 /**
@@ -80,6 +81,7 @@ public class ProjectManagement implements ProjectManagementRemote, ProjectManage
 		User user = userManagementLocal.findUserById(i);
 
 		task.setAssignee(user);
+		task.setTaskStatus(TaskStatus.INPROGRESS);
 
 		entityManager.merge(task);
 
@@ -100,6 +102,20 @@ public class ProjectManagement implements ProjectManagementRemote, ProjectManage
 	public List<Task> findAllTasksByProjectIdRequest(Integer idProject) {
 		return entityManager.createQuery("SELECT t FROM Task t WHERE t.project.id =:param1", Task.class)
 				.setParameter("param1", idProject).getResultList();
+	}
+
+	@Override
+	public void changeTaskStatus(TaskStatus taskStatus, Integer idTask) {
+		Task task = entityManager.find(Task.class, idTask);
+		task.setTaskStatus(taskStatus);
+
+		entityManager.merge(task);
+
+	}
+
+	@Override
+	public List<Task> findTasksByStudent(Integer id) {
+		return null;
 	}
 
 }

@@ -6,6 +6,7 @@ import javax.ejb.Remote;
 
 import entities.Project;
 import entities.Task;
+import entities.TaskStatus;
 
 @Remote
 public interface ProjectManagementRemote {
@@ -26,4 +27,8 @@ public interface ProjectManagementRemote {
 	List<Task> findAllTasksByProjectId(Integer idProject);
 
 	List<Task> findAllTasksByProjectIdRequest(Integer idProject);
+
+	void changeTaskStatus(TaskStatus taskStatus, Integer idTask);
+
+	List<Task> findTasksByStudent(Integer id);
 }

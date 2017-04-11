@@ -18,9 +18,11 @@ public class Task implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
 	private String description;
+
+	private TaskStatus taskStatus;
 
 	@ManyToOne
 	private User assignee;
@@ -35,6 +37,7 @@ public class Task implements Serializable {
 	public Task(String description) {
 		super();
 		this.description = description;
+		this.taskStatus = TaskStatus.NOTASSIGNED;
 	}
 
 	public Integer getId() {
@@ -67,6 +70,14 @@ public class Task implements Serializable {
 
 	public void setProject(Project project) {
 		this.project = project;
+	}
+
+	public TaskStatus getTaskStatus() {
+		return taskStatus;
+	}
+
+	public void setTaskStatus(TaskStatus taskStatus) {
+		this.taskStatus = taskStatus;
 	}
 
 }

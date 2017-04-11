@@ -115,6 +115,19 @@ public class ProjectManagement implements ProjectManagementRemote, ProjectManage
 
 	@Override
 	public List<Task> findTasksByStudent(Integer id) {
+		return entityManager.createQuery("SELECT t FROM Task t WHERE t.assignee.id=:param", Task.class)
+				.setParameter("param", id).getResultList();
+	}
+
+	@Override
+	public List<Task> findAllTasksByStatusAndProject(Integer idProject, TaskStatus taskStatus) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public List<Task> findAllTasksByStatusAndStudent(Integer idStudent, TaskStatus taskStatus) {
+		// TODO Auto-generated method stub
 		return null;
 	}
 

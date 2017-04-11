@@ -31,4 +31,8 @@ public interface ProjectManagementRemote {
 	void changeTaskStatus(TaskStatus taskStatus, Integer idTask);
 
 	List<Task> findTasksByStudent(Integer id);
+
+	List<Task> findAllTasksByStatusAndProject(Integer idProject, TaskStatus taskStatus);
+
+	List<Task> findAllTasksByStatusAndStudent(Integer idStudent, TaskStatus taskStatus);
 }

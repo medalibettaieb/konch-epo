@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html">
+
+<h:head></h:head>
+<body>
+	<h1>AHLAN</h1>
+	<h:form>
+		<h:outputText value="your name please " />
+		<h:inputText value="#{mrBean.name}" />
+		<h:commandButton action="#{mrBean.doSallem()}" value="HI" />
+	</h:form>
+
+	ahla w sahla ya #{mrBean.result}
+</body>
+</html>

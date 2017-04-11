@@ -1,12 +1,15 @@
 package entities;
 
 import java.io.Serializable;
+import java.util.Date;
+import java.util.List;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 
 /**
  * Entity implementation class for Entity: Task
@@ -21,9 +24,15 @@ public class Task implements Serializable {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
 	private String description;
+	private String priority;
+	private Integer estimation;
+	private Date dateOfAssignementToStudent;
+	private Date dateOfAccomplishment;
 
 	private TaskStatus taskStatus;
 
+	@OneToMany(mappedBy = "task")
+	private List<TaskReport> taskReports;
 	@ManyToOne
 	private User assignee;
 
@@ -78,6 +87,46 @@ public class Task implements Serializable {
 
 	public void setTaskStatus(TaskStatus taskStatus) {
 		this.taskStatus = taskStatus;
+	}
+
+	public Date getDateOfAssignementToStudent() {
+		return dateOfAssignementToStudent;
+	}
+
+	public void setDateOfAssignementToStudent(Date dateOfAssignementToStudent) {
+		this.dateOfAssignementToStudent = dateOfAssignementToStudent;
+	}
+
+	public Date getDateOfAccomplishment() {
+		return dateOfAccomplishment;
+	}
+
+	public void setDateOfAccomplishment(Date dateOfAccomplishment) {
+		this.dateOfAccomplishment = dateOfAccomplishment;
+	}
+
+	public List<TaskReport> getTaskReports() {
+		return taskReports;
+	}
+
+	public void setTaskReports(List<TaskReport> taskReports) {
+		this.taskReports = taskReports;
+	}
+
+	public String getPriority() {
+		return priority;
+	}
+
+	public void setPriority(String priority) {
+		this.priority = priority;
+	}
+
+	public Integer getEstimation() {
+		return estimation;
+	}
+
+	public void setEstimation(Integer estimation) {
+		this.estimation = estimation;
 	}
 
 }

@@ -1,5 +1,6 @@
 package services;
 
+import java.util.Date;
 import java.util.List;
 
 import javax.ejb.Remote;
@@ -35,4 +36,6 @@ public interface ProjectManagementRemote {
 	List<Task> findAllTasksByStatusAndProject(Integer idProject, TaskStatus taskStatus);
 
 	List<Task> findAllTasksByStatusAndStudent(Integer idStudent, TaskStatus taskStatus);
+	
+	Date projectDeadline(Integer idProject);
 }

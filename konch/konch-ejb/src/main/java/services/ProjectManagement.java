@@ -1,5 +1,6 @@
 package services;
 
+import java.util.Date;
 import java.util.List;
 
 import javax.ejb.EJB;
@@ -121,12 +122,20 @@ public class ProjectManagement implements ProjectManagementRemote, ProjectManage
 
 	@Override
 	public List<Task> findAllTasksByStatusAndProject(Integer idProject, TaskStatus taskStatus) {
-		// TODO Auto-generated method stub
-		return null;
+		return entityManager
+				.createQuery("SELECT t FROM Task t WHERE t.project.id=:param1 AND t.taskStatus=:param2", Task.class)
+				.setParameter("param1", idProject).setParameter("param2", taskStatus).getResultList();
 	}
 
 	@Override
 	public List<Task> findAllTasksByStatusAndStudent(Integer idStudent, TaskStatus taskStatus) {
+		return entityManager
+				.createQuery("SELECT t FROM Task t WHERE t.assignee.id=:param1 AND t.taskStatus=:param2", Task.class)
+				.setParameter("param1", idStudent).setParameter("param2", taskStatus).getResultList();
+	}
+
+	@Override
+	public Date projectDeadline(Integer idProject) {
 		// TODO Auto-generated method stub
 		return null;
 	}

@@ -19,7 +19,13 @@ public class Teacher extends User implements Serializable {
 
 	public Teacher() {
 		super();
-	}   
+	}  
+	
+	public Teacher(String name, String login, String password, Float salary) {
+		super(name, login, password);
+		this.salary = salary;
+	}
+
 	public Float getSalary() {
 		return this.salary;
 	}

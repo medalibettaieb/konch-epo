@@ -40,4 +40,6 @@ public interface ProjectManagementLocal {
 	Integer projectDuration(Integer idProject);
 
 	Date deadlineProject(Integer idProject, Date date);
+	
+	void deleteProject(Project project);
 }

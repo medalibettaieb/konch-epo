@@ -52,4 +52,16 @@ public class UserManagement implements UserManagementRemote, UserManagementLocal
 		return entityManager.createQuery("select u from User u ", User.class).getResultList();
 	}
 
+	@Override
+	public User login(String login, String password) {
+		User user = null;
+		try {
+			user = entityManager.createQuery("select u from User u where u.login=:l and u.password=:p", User.class)
+					.setParameter("l", login).setParameter("p", password).getSingleResult();
+		} catch (Exception e) {
+			System.err.println("user not found");
+		}
+		return user;
+	}
+
 }

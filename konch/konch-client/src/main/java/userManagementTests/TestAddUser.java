@@ -15,14 +15,19 @@ public class TestAddUser {
 		UserManagementRemote userManagementRemote = (UserManagementRemote) context
 				.lookup("konch-ear/konch-ejb/UserManagement!services.UserManagementRemote");
 
-		Student student = new Student();
-		student.setName("salah");
+		Student student = new Student("ghassen", "ghaston", "ghaston", "the last one");
+		Student student2 = new Student("mounir", "mounir", "mounir", "the last one");
+		Student student3 = new Student("chams", "chams", "chams", "the best one");
 
-		Teacher teacher = new Teacher();
-		teacher.setName("mourad");
+		Teacher teacher = new Teacher("imed", "omda", "omda", 120000F);
+		Teacher teacher2 = new Teacher("med", "daly", "daly", 1F);
 
 		userManagementRemote.addUser(student);
+		userManagementRemote.addUser(student2);
+		userManagementRemote.addUser(student3);
 		userManagementRemote.addUser(teacher);
+		userManagementRemote.addUser(teacher2);
 	}
+	
 
 }

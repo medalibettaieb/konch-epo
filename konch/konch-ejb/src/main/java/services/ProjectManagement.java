@@ -33,7 +33,7 @@ public class ProjectManagement implements ProjectManagementRemote, ProjectManage
 
 	@Override
 	public void addProject(Project project) {
-		entityManager.persist(project);
+		entityManager.merge(project);
 	}
 
 	@Override
@@ -155,6 +155,12 @@ public class ProjectManagement implements ProjectManagementRemote, ProjectManage
 		calendar.setTime(date);
 		calendar.add(Calendar.DATE, projectDuration);
 		return calendar.getTime();
+
+	}
+
+	@Override
+	public void deleteProject(Project project) {
+		entityManager.remove(entityManager.merge(project));
 
 	}
 }

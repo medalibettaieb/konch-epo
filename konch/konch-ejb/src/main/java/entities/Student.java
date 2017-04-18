@@ -19,6 +19,11 @@ public class Student extends User implements Serializable {
 		super();
 	}
 
+	public Student(String name, String login, String password, String promotion) {
+		super(name, login, password);
+		this.promotion = promotion;
+	}
+
 	public String getPromotion() {
 		return this.promotion;
 	}

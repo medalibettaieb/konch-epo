@@ -19,4 +19,6 @@ public interface UserManagementLocal {
 	User findUserById(Integer id);
 
 	List<User> findAllUsers();
+
+	User login(String login, String password);
 }

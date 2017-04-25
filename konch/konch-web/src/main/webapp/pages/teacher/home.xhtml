@@ -29,7 +29,8 @@
 
 		<h:panelGrid columns="2" rendered="#{projectBean.showForm}">
 			<h:outputText value="name" />
-			<h:inputText value="#{projectBean.project.name}" />
+			<h:inputText id="i1" value="#{projectBean.project.name}" required="true" requiredMessage="ti yezzi "/>
+			<h:message for="i1"/>
 			<h:commandButton action="#{projectBean.dosaveOrUpdate()}"
 				value="save or update" />
 			<h:commandButton action="#{projectBean.doDelete()}" value="delete" />
